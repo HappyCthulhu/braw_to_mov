@@ -34,20 +34,19 @@ def check_if_f_names_is_correct(files):
     input()
 
 
-def rename_files(files):
+def rename_files(files, dp):
     for old_name in files:
-        old_fp = Path(fps).joinpath(old_name)
-        new_fp = f'{Path(fps).joinpath(get_f_name_without_format(old_name))}.mov'
+        old_fp = Path(dp).joinpath(old_name)
+        new_fp = f'{Path(dp).joinpath(get_f_name_without_format(old_name))}.mov'
 
         os.rename(old_fp, new_fp)
 
-
-logger.info('Пожалуйста, ниже введите путь до директории:')
+# logger.info('Пожалуйста, ниже введите путь до директории:')
 # TODO: сделать кроссплатформенные пути сделать
-fps = '/home/valera/PycharmProjects/braw_to_mov/files'
+# fps = '/home/valera/PycharmProjects/braw_to_mov/files'
 
-all_files = get_dir_files(fps)
-braw_files = get_braw_file(all_files)  # file names without format (without .braw)
-check_if_f_names_is_correct(braw_files)
-rename_files(braw_files)
+# all_files = get_dir_files(fps)
+# braw_files = get_braw_file(all_files)  # file names without format (without .braw)
+# check_if_f_names_is_correct(braw_files)
+# rename_files(braw_files)
 # fps = input()
