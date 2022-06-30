@@ -5,8 +5,9 @@ description = ""
 authors = ["Валерий Газаров <v.gazarov@fortus.pro>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-PyQt6 = "6.1.0"
+python = "^3.8"
+PyQt6 = "^6.3.0"
+loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 
