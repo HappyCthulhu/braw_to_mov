@@ -1,7 +1,5 @@
-import os
 import sys
 import traceback
-from pathlib import Path
 
 from loguru import logger as loguru_logger
 
@@ -50,7 +48,6 @@ def my_exception_hook(type, value, tb):
     # else:
     #     with open(Path(logging_dp, 'unexpected_exceptions.log'), 'w', encoding='utf-8') as log_file:
     #         log_file.write(error_msg)
-
 
     raise error_msg
 
