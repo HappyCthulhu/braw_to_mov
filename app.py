@@ -8,7 +8,6 @@ from logic import rename_files
 
 
 class MainController:
-    # TODO: сделать надпись в духе "Success"
     def __init__(self, ui):
         self.ui = ui
         self.connect_slots()
@@ -22,9 +21,17 @@ class MainController:
     def select_files(self):
         f_ps, _ = QFileDialog.getOpenFileNames(caption='Navigation', filter=".braw files (*.braw);;All Files (*)")
 
-        if f_ps:
+        if self.check_if_only_braw_files(f_ps):
             self.display_files(f_ps)
             self.ui.convert_button.setEnabled(True)
+
+    def check_if_only_braw_files(self, f_names):
+        for f_name in f_names:
+            if not f_name.endswith('.braw'):
+                self.ui.files_label.setText(f'Only .braw files are allowed! Those files is not .braw:\n'
+                                            f'{f_name}')
+                return False
+        return True
 
     def display_files(self, f_ps):
         self.f_names = [PurePath(fp).parts[-1] for fp in f_ps]
@@ -34,6 +41,8 @@ class MainController:
     def rename_files(self):
         # TODO: добавить проверку, что файлы действительно .bmow
         rename_files(self.f_names, self.dp)
+        self.ui.files_label.setText('Success!')
+        self.ui.convert_button.setEnabled(False)
 
     def control_music(self):
         if not self.music_status:
