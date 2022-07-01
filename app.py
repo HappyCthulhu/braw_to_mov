@@ -1,4 +1,3 @@
-import time
 from pathlib import PurePath, Path
 
 import pygame
@@ -8,14 +7,17 @@ from braw_to_mov import Ui_MainWindow
 from logic import rename_files
 
 
-class Reactions:
+class MainController:
     # TODO: сделать надпись в духе "Success"
     def __init__(self, ui):
         self.ui = ui
+        self.connect_slots()
+        self.music_status = False
 
-    def ui_reactions(self):
+    def connect_slots(self):
         self.ui.select_button.clicked.connect(self.select_files)
         self.ui.convert_button.clicked.connect(self.rename_files)
+        self.ui.speaker_button.clicked.connect(self.control_music)
 
     def select_files(self):
         f_ps, _ = QFileDialog.getOpenFileNames(caption='Navigation', filter=".braw files (*.braw);;All Files (*)")
@@ -30,11 +32,16 @@ class Reactions:
         self.ui.files_label.setText(', '.join(self.f_names))
 
     def rename_files(self):
-        # TODO: сделать некликабельным, пока не появятся переменные f_names, dp
+        # TODO: добавить проверку, что файлы действительно .bmow
         rename_files(self.f_names, self.dp)
 
-    def stop_music(self):
-        pygame.mixer.music.stop()
+    def control_music(self):
+        if not self.music_status:
+            pygame.mixer.music.play()
+            self.music_status = True
+        else:
+            pygame.mixer.music.stop()
+            self.music_status = False
 
 
 if __name__ == "__main__":
@@ -46,13 +53,10 @@ if __name__ == "__main__":
     MainWindow = QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    reactions = Reactions(ui)
-    reactions.ui_reactions()
+    reactions = MainController(ui)
 
     pygame.mixer.init()
     pygame.mixer.music.load('song.mp3')
-    pygame.mixer.music.play()
-
     MainWindow.show()
 
     sys.exit(app.exec())
