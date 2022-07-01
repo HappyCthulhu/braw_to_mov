@@ -8,6 +8,7 @@ authors = ["Валерий Газаров <v.gazarov@fortus.pro>"]
 python = "^3.8"
 PyQt6 = "^6.3.0"
 loguru = "^0.6.0"
+pygame = "^2.1.2"
 
 [tool.poetry.dev-dependencies]
 
