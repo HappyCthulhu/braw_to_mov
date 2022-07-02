@@ -1,10 +1,11 @@
+import os
 from pathlib import PurePath, Path
 
 import pygame
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog
 
 from braw_to_mov import Ui_MainWindow
-from logic import rename_files
+from find_path import find_path
 
 
 class MainController:
@@ -21,7 +22,7 @@ class MainController:
     def select_files(self):
         f_ps, _ = QFileDialog.getOpenFileNames(caption='Navigation', filter=".braw files (*.braw);;All Files (*)")
 
-        if self.check_if_only_braw_files(f_ps):
+        if self.check_if_only_braw_files(f_ps) and f_ps:
             self.display_files(f_ps)
             self.ui.convert_button.setEnabled(True)
 
@@ -39,8 +40,11 @@ class MainController:
         self.ui.files_label.setText(', '.join(self.f_names))
 
     def rename_files(self):
-        # TODO: добавить проверку, что файлы действительно .bmow
-        rename_files(self.f_names, self.dp)
+        for old_name in self.f_names:
+            old_fp = Path(self.dp).joinpath(old_name)
+            new_fp = f'{Path(self.dp).joinpath(old_name.split(".")[0])}.mov'
+
+            os.rename(old_fp, new_fp)
         self.ui.files_label.setText('Success!')
         self.ui.convert_button.setEnabled(False)
 
@@ -65,7 +69,7 @@ if __name__ == "__main__":
     reactions = MainController(ui)
 
     pygame.mixer.init()
-    pygame.mixer.music.load('song.mp3')
+    pygame.mixer.music.load(find_path('song.mp3'))
     MainWindow.show()
 
     sys.exit(app.exec())
