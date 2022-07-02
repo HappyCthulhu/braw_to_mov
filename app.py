@@ -23,21 +23,30 @@ class MainController:
         f_ps, _ = QFileDialog.getOpenFileNames(caption='Navigation', filter=".braw files (*.braw);;All Files (*)")
 
         if self.check_if_only_braw_files(f_ps) and f_ps:
-            self.display_files(f_ps)
+            f_names = self.display_files(f_ps)
+            f_names_with_brackets = ', '.join([f'"{f_name}"' for f_name in f_names])
+            self.ui.files_label.setText(f_names_with_brackets)
             self.ui.convert_button.setEnabled(True)
+        else:
+            self.ui.convert_button.setEnabled(False)
 
-    def check_if_only_braw_files(self, f_names):
-        for f_name in f_names:
-            if not f_name.endswith('.braw'):
-                self.ui.files_label.setText(f'Only .braw files are allowed! Those files is not .braw:\n'
-                                            f'{f_name}')
-                return False
+    def check_if_only_braw_files(self, f_ps):
+
+        not_braw = [fp for fp in f_ps if not fp.endswith('.braw')]
+
+        if not_braw:
+            f_names = self.display_files(not_braw)
+            f_names_with_brackets = ', '.join([f'"{f_name}"' for f_name in f_names])
+            self.ui.files_label.setText(f'These files are not .braw:\n'
+                                        f'{f_names_with_brackets}')
+            return False
+
         return True
 
     def display_files(self, f_ps):
         self.f_names = [PurePath(fp).parts[-1] for fp in f_ps]
         self.dp = Path(f_ps[0]).parent.absolute()
-        self.ui.files_label.setText(', '.join(self.f_names))
+        return self.f_names
 
     def rename_files(self):
         for old_name in self.f_names:
