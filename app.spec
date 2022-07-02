@@ -27,7 +27,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='app',
+    name='braw2mov',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
