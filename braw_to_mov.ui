@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>452</width>
-    <height>357</height>
+    <width>413</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -60,7 +60,7 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image : url(speaker.png);</string>
+         <string notr="true">background-image: url(:/icons/speaker.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -86,69 +86,6 @@
       <property name="verticalSpacing">
        <number>10</number>
       </property>
-      <item row="2" column="0">
-       <widget class="QLabel" name="files_label">
-        <property name="maximumSize">
-         <size>
-          <width>500</width>
-          <height>400</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(244, 244, 244);</string>
-        </property>
-        <property name="text">
-         <string>No files is selected yet</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::AutoText</enum>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <spacer name="top_spacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="0">
-       <spacer name="bottom_spacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Preferred</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="default_label">
         <property name="maximumSize">
@@ -184,8 +121,24 @@ font-weight:bold;</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <spacer name="top_spacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="0">
+       <layout class="QGridLayout" name="buttons_layout">
         <property name="topMargin">
          <number>20</number>
         </property>
@@ -214,7 +167,8 @@ font-weight:bold;</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(41, 104, 199);
-color: rgb(244, 244, 244);</string>
+color: rgb(244, 244, 244);
+font-weight: bold;</string>
           </property>
           <property name="text">
            <string>Select Files</string>
@@ -260,10 +214,12 @@ color: rgb(244, 244, 244);</string>
            <string notr="true">QPushButton {
 	background-color: rgb(41, 104, 199);
 	color: rgb(244, 244, 244);
+	font-weight: bold;
 }
 QPushButton:disabled {
 	background-color: rgb(159, 159, 159);
 	color: rgb(244, 244, 244);
+	font-weight: bold;
 }</string>
           </property>
           <property name="text">
@@ -273,11 +229,159 @@ QPushButton:disabled {
         </item>
        </layout>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="files_label">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(244, 244, 244);
+font-weight:normal;</string>
+        </property>
+        <property name="text">
+         <string>No files is selected yet</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <spacer name="bottom_spacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="slider_layout">
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <spacer name="left_spacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="braw_to_mov_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(244, 244, 244);
+font-weight: normal;</string>
+          </property>
+          <property name="text">
+           <string>.braw-&gt;.mov</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="format_slider">
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="maximum">
+           <number>1</number>
+          </property>
+          <property name="pageStep">
+           <number>1</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="mov_to_braw_label">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(244, 244, 244);
+font-weight: normal;</string>
+          </property>
+          <property name="text">
+           <string>.mov-&gt;.braw</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="right_spacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
