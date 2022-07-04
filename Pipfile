@@ -7,10 +7,8 @@ name = "pypi"
 loguru = "*"
 pygame = "*"
 pyqt6 = "*"
-qtwidgets = "*"
 pyqt6-tools = "*"
 pyqt6-plugins = "*"
-pyside2 = "*"
 
 [dev-packages]
 
