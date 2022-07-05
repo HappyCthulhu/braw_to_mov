@@ -8,7 +8,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('./song.mp3', '.'), ('./speaker.png', '.')],
+    datas=[('./song.mp3', '.'), ('./resource.rcc', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
