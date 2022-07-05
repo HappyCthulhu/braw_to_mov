@@ -18,12 +18,12 @@ If after trying to launch the application, you get an error "braw2mov can`t be o
 Commands for pyinstaller:
 ### OS X:
 ```
-pyinstaller --noconfirm --onedir --windowed --name braw2mov --icon "b2m.icns" --add-data "./song.mp3:." --add-data "./speaker.png:."  "./app.py"
+pyinstaller --noconfirm --onedir --windowed --name braw2mov --icon "b2m.icns" --add-data "./song.mp3:." --add-data "./resource.rcc:." "./app.py"
 ```
 
 ### Linux:
 ```
-pyinstaller --noconfirm --onefile  --name braw2mov --icon "b2m.icns" --add-data "./song.mp3:." --add-data "./speaker.png:."  "./app.py"
+pyinstaller --noconfirm --onefile  --name braw2mov --icon "b2m.icns" --add-data "./song.mp3:." --add-data "./resource.rcc:." "./app.py"
 
 ```
 
