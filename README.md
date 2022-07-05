@@ -24,7 +24,11 @@ pyinstaller --noconfirm --onedir --windowed --name braw2mov --icon "b2m.icns" --
 ### Linux:
 ```
 pyinstaller --noconfirm --onefile  --name braw2mov --icon "b2m.icns" --add-data "./song.mp3:." --add-data "./resource.rcc:." "./app.py"
+```
 
+### Windows:
+```
+pyinstaller --noconfirm --onefile --windowed --name braw2mov --icon "b2m.ico" --add-data "./song.mp3:." --add-data "./resource.rcc:." "./app.py"
 ```
 
 U also can install with `pyinstaller brew2mov.spec`
