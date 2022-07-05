@@ -1,7 +1,7 @@
 import os
 from pathlib import PurePath, Path
-
 import pygame
+from PyQt6.QtCore import QResource
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog
 
 from braw_to_mov import Ui_MainWindow
@@ -23,7 +23,6 @@ class MainController:
 
     def define_format(self):
         self.formatting_direction = self.ui.format_slider.value()
-        print(self.formatting_direction)
 
     def select_files(self):
         if self.ui.format_slider.value() == 0:
@@ -54,7 +53,7 @@ class MainController:
             f_names = self.display_files(not_needed_format)
             f_names_with_brackets = ', '.join([f'"{f_name}"' for f_name in f_names])
 
-            self.ui.files_label.setText(f'❗These files are not {format_from}:❗\n'
+            self.ui.files_label.setText(f'❗These files are not {format_from}:\n'
                                         f'{f_names_with_brackets}')
             # TODO: не могу заставить это менять цвет:
             # self.ui.files_label.setStyleSheet("color: rgb(0, 0, 0)")
@@ -92,6 +91,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
+    QResource.registerResource(find_path("resource.rcc"))
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     reactions = MainController(ui)
